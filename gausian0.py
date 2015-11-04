@@ -16,8 +16,12 @@ class gaus_std(object):
 		y_v = self.y_v
 		x=point[0]
 		y=point[1]
-		final = 
-			(1/(2*M.pi*x_v*y_v))*M.exp(-.5(()))
+		return final = 
+			(1/(2*M.pi*M.sqrt(x_v)*M.sqrt(y_v)))*M.exp(-.5*
+				(
+					(M.pow((x-x_m),2)/x_v)+
+					(M.pow((y-y_m),2)/y_v)
+				)
 
 
 
