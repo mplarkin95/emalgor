@@ -60,17 +60,21 @@ class gaus_mix(object):
 	def change_weight(self,component,nWeight):
 		self.weights[self.num[component]]=nWeight
 
+# 
+
 
 #########################
 #		TESTING
 #########################
 a = gaus_std(6,5,1,.8)
 b = gaus_std(7,12,.6,1.2)
-c = gaus_std(9,11,.9,2.1)
-
+c = gaus_std(9,11,.9,2.1) 
+print "gaus_mix"
+print "--------------------"
 g= gaus_mix(3,a,b,c)
 print g
 g.change_weight(1,2)
 print g
+print "--------------------"
 
 
