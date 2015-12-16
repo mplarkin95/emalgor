@@ -27,12 +27,7 @@ class NormDistVal(object):
         y = nu.random.normal(self.y_mean, self.y_dev, amount_points)
         points_list = []
         for i in range(0, amount_points):
-            point = [0,1]
-            for j in x:
-                point[0] = j
-            for k in y:
-                point[1] = k
-            points_list.append(point)
+            points_list.append([x[i],y[i]])
         return points_list
 
     def get_points(self):
@@ -41,4 +36,8 @@ class NormDistVal(object):
     def get_number_points(self):
         return self.number_points
 
+if __name__ == '__main__':
+    s = NormDistVal(1,2,1.0,1.5,100)
+    for x in s.get_points():
+        print x
 
