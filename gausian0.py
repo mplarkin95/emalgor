@@ -21,6 +21,16 @@ class gaus_std(object):
 		y=point[1]
 		return(1/(2*M.pi*M.sqrt(x_v)*M.sqrt(y_v)))*M.exp(-.5*((M.pow((x-x_m),2)/x_v)+(M.pow((y-y_m),2)/y_v)))
 
+	def x_mean(self): return self.x_m
+
+	def y_mean(self): return self.y_m
+
+	def x_var(self): return self.x_v
+
+	def y_var(self): return self.y_v
+
+
+
 	def x_mean_change(self,n):
 		self.x_m = n
 
@@ -32,6 +42,8 @@ class gaus_std(object):
 
 	def y_var_change(self,n):
 		self.y_v = n
+	
+
 
 
 #gausian Mixture model
@@ -43,7 +55,7 @@ class gaus_mix(object):
 		self.weights = {}
 		self.num = []
 		for c in components:
-			self.weights[c]=1
+			self.weights[c]=1.0/len(components)
 			self.num.append(c)
 
 	def __str__(self):
@@ -57,24 +69,14 @@ class gaus_mix(object):
 	def component(self,n):
 		return self.num[n]
 
+	def components(self):
+		return self.num
+
+	def weight(self,component):
+		return self.weights[component]
+
 	def change_weight(self,component,nWeight):
 		self.weights[self.num[component]]=nWeight
 
-# 
-
-
-#########################
-#		TESTING
-#########################
-a = gaus_std(6,5,1,.8)
-b = gaus_std(7,12,.6,1.2)
-c = gaus_std(9,11,.9,2.1) 
-print "gaus_mix"
-print "--------------------"
-g= gaus_mix(3,a,b,c)
-print g
-g.change_weight(1,2)
-print g
-print "--------------------"
 
 

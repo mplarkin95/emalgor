@@ -7,15 +7,13 @@ class NormDistVal(object):
     A class for 2-d data generation with normally distributed values
     """
 
-    def __init__(self, x_mean, y_mean, x_var, y_var, amount_points):
+    def __init__(self, x_mean, y_mean, x_var, y_var):
         self.x_mean = x_mean
         self.y_mean = y_mean
         self.x_var = x_var
         self.y_var = y_var
         self.x_dev = math.sqrt(x_var)
         self.y_dev = math.sqrt(y_var)
-        self.points = self.calc_norm_dist_val(amount_points)
-        self.number_points = amount_points
 
     def __str__(self):
         return "x mean: " + str(self.x_m) + "\ny mean: " + str(self.y_m) + "\nx variance: " + str(
@@ -30,14 +28,5 @@ class NormDistVal(object):
             points_list.append([x[i],y[i]])
         return points_list
 
-    def get_points(self):
-        return self.points
 
-    def get_number_points(self):
-        return self.number_points
-
-if __name__ == '__main__':
-    s = NormDistVal(1,2,1.0,1.5,100)
-    for x in s.get_points():
-        print x
 
