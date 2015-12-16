@@ -1,54 +1,15 @@
 Exploring EM on GMMs
 
-Here's what to do:
 
-0. Build a class for representing a 2-d normal (Gaussian) distribution.  Assume
-that x and y are independent, so that all you need to know are the separate
-means and variances for x and y.  Your class should support setting the means
-and variances and computing the value of the distribution at any point.  
-
-1. Build a class for representing a 2-d Gaussian Mixture Model (GMM) with a
-fixed number of components.  Your class should support changing the mean,
-variance, and weight of any component.
-
-2. Build a class for 2-d data generation with normally distributed values (x,y).
-Assume that x and y are independent, so that all you need to initialize are the mean and
-variance for each of x and y.  
-
-3. Implement the EM algorithm for GMM training as previously described.  Your
-implementation should support setting initial means, variances, and weights,
-providing training data, and running for a configurable number of iterations or
-until the size of all parameter changes is below some configurable threshold.
-
-4. Initialize a GMM with 3 components to have means (1,1), (2,2), & (3,3), variances all 1.0,
-and weights all 1/3.  
-
-5. Initialize three data-generators A, B, and C, with means (1,2), (3,3), (5, 2), and
-variances (1.0, 1.5), (1.0, 0.5), (0.5, 0.5).  
-
-6. Generate a complete training set by sampling from A, B, and C in amounts 100,
-200, 300, respectively.
-
-7. Run your EM algorithm on this training set and see how well your GMM
-converges to the parameters used for generation.  
-
-Questions: 
 
 A. Does it matter if you shuffle the training data or can you present
 all the A data, then B data, then C data?
+	
+	The order of the data does not matter as all of the data is iterated upon seperately feeding in chunks at a time would not effect the GMM algorithim unless those chunks were fed in at different iterations.
 
 B. Is this enough data?  More than enough?
+	This is enough data so that based on a few variables and the way that the data distributes itself our model reaches close to the intended goals relatively quickly.
 
 C. Does your model converge?  How fast?
+	Our model is largely determined based on the threshold value.  This value when put in the right spot allows our model to converge relatively quickly and return a correct answer. However, placing too high of a threshold constraint causes the program to stall and maintain the same amount of threshold points.  The optimal value is between .96-.97 when .97 works the program stops immidiately at the right answer.
 
-EXTRAS:
-
-Build a system for plotting 2-d datapoints so you can see what a training set
-looks like.
-
-Build a system for plotting 2-d Gaussians using isoclines so you can visualize a
-single Gaussian.  Extend this to visualization of a complete GMM (this requires finding a good
-way to support visualization of the mixture weights).  
-
-Play around with more experiments.  See how bad things are when the number of
-GMM components is not the same as the number of training components.  
